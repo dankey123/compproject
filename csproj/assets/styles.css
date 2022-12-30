@@ -1,0 +1,32 @@
+body {
+    font-family: sans-serif;
+    background: #36393f;
+    color:rgb(255, 255, 255)
+}
+
+.DateRangePickerInput{
+    background-color:#36393f;
+    border-color: #36393f;
+}
+
+
+
+.Select-control {
+    background-color: #000000 !important;
+    color:white;
+    width: 126px;
+    border-color: white;
+    
+  }
+  
+.Select-menu-outer {
+    background-color: #36393f;
+    color: white;
+}
+
+.Select-value-label {
+    color: white !important;
+
+}
+
+
