@@ -1,32 +1,73 @@
 body {
     font-family: sans-serif;
-    background: #36393f;
+    background: #222736;
     color:rgb(255, 255, 255)
 }
-
+#date-picker-range{
+    position: absolute;
+    background-color: #2A3042 ;
+    left: 476px;
+    top: 145px;
+}
+.DateInput_input{
+    background-color: #2A3042;
+    -webkit-text-fill-color: white;
+}
+.DayPicker{
+    background-color: #2A3042;
+}
 .DateRangePickerInput{
-    background-color:#36393f;
-    border-color: #36393f;
+    background-color:#2A3042;
+    
+    -webkit-text-fill-color: white;
+
+}
+.DateInput{
+    background-color: #2A3042;
 }
 
+.CalendarMonthGrid{
+    background-color: #2A3042;
+}
+.DayPicker_transitionContainer,.CalendarMonth,.CalendarDay {
+    background-color: #2A3042;
+}
+#radio{
+    position: absolute;
+    left: 100px;
+    top: 170px;
+}
+#loading-icon{
+   position:absolute;
+   top: 600px
 
+}
+#dropdown {
 
-.Select-control {
-    background-color: #000000 !important;
-    color:white;
-    width: 126px;
-    border-color: white;
-    
+    position: absolute;
+    width: 292px;
+    left: 574px;
+    top: 52px;
+    -webkit-text-fill-color: white;
+    background-color: #353E53;
+
+}
+
+.Select-control , .Select-menu-outer {
+
+    background-color: #353E53 !important;
+    -webkit-text-fill-color: white;
   }
   
-.Select-menu-outer {
-    background-color: #36393f;
-    color: white;
+
+
+#chart_plot{
+    position: absolute;
+    width: 874px;
+    height: 460px;
+    left: 88px;
+    top: 200px;
+
+    background: #2A3042;
+
 }
-
-.Select-value-label {
-    color: white !important;
-
-}
-
-
