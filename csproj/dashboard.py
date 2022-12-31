@@ -55,11 +55,10 @@ app = Dash(__name__)
 app.layout = html.Div(
     children=[
     
-    html.Div
-    ([
-    '''select a stock''',
+
     dcc.Dropdown(options=option,value="GOOG",id="dropdown"),
-    ]),
+
+
 
 
     html.Div(
@@ -102,7 +101,15 @@ app.layout = html.Div(
     Input('date-picker-range', 'end_date'))
 def update_graph(radio_val,input_value,start_date,end_date):
     if input_value is None:
-        return {'data': []}
+        figure = line_chart('APC')
+        figure.layout.plot_bgcolor = '#2A3042'
+        figure.layout.paper_bgcolor = '#2A3042'
+        figure.layout.font= {"color": "white"}
+
+        figure.update_yaxes(gridwidth=1, gridcolor='#36393f')
+        figure.update_layout(xaxis=dict(showgrid=False),
+              yaxis=dict(showgrid=True))
+        return figure
     else:
         if start_date is not None:
             global date_start
@@ -114,13 +121,13 @@ def update_graph(radio_val,input_value,start_date,end_date):
             figure = OHLC_chart(input_value)
         if radio_val == 'line':
             figure = line_chart(input_value)
-        figure.layout.plot_bgcolor = '#161a25'
-        figure.layout.paper_bgcolor = '#36393f'
+        figure.layout.plot_bgcolor = '#2A3042'
+        figure.layout.paper_bgcolor = '#2A3042'
         figure.layout.font= {"color": "white"}
 
         figure.update_yaxes(gridwidth=1, gridcolor='#36393f')
         figure.update_layout(xaxis=dict(showgrid=False),
-              yaxis=dict(showgrid=True), width = 1400, height = 600)
+              yaxis=dict(showgrid=True))
         return figure
     
 
@@ -128,4 +135,6 @@ def update_graph(radio_val,input_value,start_date,end_date):
 
 if __name__ == '__main__':
     app.run_server(debug=True)
+
+
 
