@@ -48,10 +48,8 @@ def OHLC_chart(find_ticker):
 
 
 # visit http://127.0.0.1:8050/ in your web browser.
-
 app = Dash(__name__)
-
-
+app.title = 'comp proj'
 app.layout = html.Div(
     children=[
     
