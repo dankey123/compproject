@@ -65,7 +65,7 @@ app.layout = html.Div(
 
     dcc.Loading
     (
-            id="loading-icon",
+            id="loading-icon", className="dash-spinner",
             children=[         
             dcc.RadioItems(
             options=[
@@ -88,7 +88,7 @@ app.layout = html.Div(
             )
             ],
             type="default",
-    )
+     style={'left':'1px'})
     )
 
 ])
@@ -121,6 +121,7 @@ def update_graph(radio_val,input_value,start_date,end_date):
             figure = OHLC_chart(input_value)
         if radio_val == 'line':
             figure = line_chart(input_value)
+        
         figure.layout.plot_bgcolor = '#2A3042'
         figure.layout.paper_bgcolor = '#2A3042'
         figure.layout.font= {"color": "white"}
@@ -135,6 +136,5 @@ def update_graph(radio_val,input_value,start_date,end_date):
 
 if __name__ == '__main__':
     app.run_server(debug=True)
-
 
 
