@@ -37,11 +37,13 @@ body {
     left: 100px;
     top: 170px;
 }
-#loading-icon{
-   position:absolute;
-   top: 600px
-
-}
+.dash-spinner {
+    background-color: #222736;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%,0%);
+  }
 #dropdown {
 
     position: absolute;
@@ -71,3 +73,4 @@ body {
     background: #2A3042;
 
 }
+
