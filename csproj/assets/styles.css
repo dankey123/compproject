@@ -1,13 +1,13 @@
 body {
     font-family: sans-serif;
-    background: #222736;
+    background: #222736 !important;
     color:rgb(255, 255, 255)
 }
 #date-picker-range{
     position: absolute;
     background-color: #2A3042 ;
     left: 476px;
-    top: 145px;
+    top: 165px;
 }
 .DateInput_input{
     background-color: #2A3042;
@@ -35,10 +35,10 @@ body {
 #radio{
     position: absolute;
     left: 100px;
-    top: 170px;
+    top: 190px;
 }
 .dash-spinner {
-    background-color: #222736;
+    background: #222736;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -68,9 +68,17 @@ body {
     width: 874px;
     height: 460px;
     left: 88px;
-    top: 200px;
+    top: 220px;
 
     background: #2A3042;
 
+}
+
+#liveprice{
+    position: absolute;
+    left: 88px;
+    top:140px;
+    
+    font-size: 25px;
 }
 
