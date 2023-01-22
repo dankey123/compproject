@@ -4,6 +4,7 @@ import pandas as pd
 import plotly.graph_objects as go
 import yfinance as yf
 from datetime import date
+from time import sleep
 
 
 
@@ -17,6 +18,16 @@ ticker_List = ticks['Ticker'].tolist()
 company_Name = ticks['Name'].tolist()
 option = [{'label': t, 'value': t} for t in ticker_List]
 
+def lp(stock_ticker):
+    
+        stock = yf.Ticker(stock_ticker)
+    
+        price = stock.info['currentPrice']
+        
+        return price
+
+    
+    
 #fetches OHLC data for a given ticker
 def stock_data(stock_ticker):
     stock = yf.Ticker(stock_ticker)
@@ -31,6 +42,8 @@ def stock_data(stock_ticker):
     close_data = df['Close'].tolist()
     global dates 
     dates =df.index
+
+        
 
 def line_chart(find_ticker):
     stock_data(find_ticker)
@@ -48,23 +61,24 @@ def OHLC_chart(find_ticker):
 
 
 # visit http://127.0.0.1:8050/ in your web browser.
-app = Dash(__name__)
+app = Dash(__name__,update_title=None)
 app.title = 'comp proj'
 app.layout = html.Div(
     children=[
     
 
     dcc.Dropdown(options=option,value="GOOG",id="dropdown"),
-
-
-
-
+    dcc.Interval( id='interval_component',interval=5000,n_intervals=2,),
+    html.Div(children = '',id='liveprice'),
     html.Div(
+    
 
     dcc.Loading
     (
             id="loading-icon", className="dash-spinner",
-            children=[         
+            children=[ 
+            
+            
             dcc.RadioItems(
             options=[
             {'label': 'Line', 'value': 'line'},
@@ -103,7 +117,8 @@ def update_graph(radio_val,input_value,start_date,end_date):
         figure.layout.plot_bgcolor = '#2A3042'
         figure.layout.paper_bgcolor = '#2A3042'
         figure.layout.font= {"color": "white"}
-
+        
+        
         figure.update_yaxes(gridwidth=1, gridcolor='#36393f')
         figure.update_layout(xaxis=dict(showgrid=False),
               yaxis=dict(showgrid=True))
@@ -120,6 +135,9 @@ def update_graph(radio_val,input_value,start_date,end_date):
         if radio_val == 'line':
             figure = line_chart(input_value)
         
+        
+        
+        
         figure.layout.plot_bgcolor = '#2A3042'
         figure.layout.paper_bgcolor = '#2A3042'
         figure.layout.font= {"color": "white"}
@@ -128,11 +146,23 @@ def update_graph(radio_val,input_value,start_date,end_date):
         figure.update_layout(xaxis=dict(showgrid=False),
               yaxis=dict(showgrid=True))
         return figure
-    
+
+@app.callback(    
+    Output('liveprice', 'children'),
+    Input('dropdown','value'),
+    Input('interval_component', 'n_intervals')
+    )
+def live(input_value,a):
+    if input_value is None:
+        price = "NAN"
+        return price
+        
+    else:
+        price = "$"+str("%.2f" % lp(input_value))
+        return price
 
 
 
 if __name__ == '__main__':
     app.run_server(debug=True)
-
 
