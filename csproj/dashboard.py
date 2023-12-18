@@ -22,7 +22,7 @@ def lp(stock_ticker):
     
         stock = yf.Ticker(stock_ticker)
     
-        price = stock.info['currentPrice']
+        price = stock.fast_info['last_price']
         
         return price
 
@@ -164,5 +164,4 @@ def live(input_value,a):
 
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
-
+    app.run_server(debug=False)
